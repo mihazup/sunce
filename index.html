@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+	<link rel="shortcut icon" href="sunce-favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nanbudo Klub "Sunce" | Vještina i Disciplina</title>
+    <style>
+        /* --- Generalni Stilovi --- */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
+
+        :root {
+            --primary-color: #2c3e50; /* Tamno plava */
+            --secondary-color: #e74c3c; /* Jarko crvena */
+            --light-color: #ecf0f1; /* Svijetlo siva */
+            --white-color: #ffffff;
+            --dark-text: #34495e;
+        }
+
+        html {
+            scroll-behavior: smooth; /* Omogućuje glatki scroll na linkove */
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--white-color);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        
+        h1 { font-size: 3rem; }
+        h2 { font-size: 2.5rem; color: var(--primary-color); text-align: center; margin-bottom: 2rem; }
+        h3 { font-size: 1.5rem; color: var(--primary-color); }
+        h4 { font-size: 1.2rem; color: var(--dark-text); }
+        p { margin-bottom: 1rem; }
+
+        section {
+            padding: 60px 0;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+
+        /* --- Navigacija --- */
+        .navbar {
+            background: var(--white-color);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .navbar .logo-accent {
+            color: var(--secondary-color);
+        }
+
+        /* --- Hero Sekcija --- */
+        .hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.7), rgba(44, 62, 80, 0.7)), url('dora2.jpg') no-repeat center center/cover;
+            height: 90vh;
+            color: var(--white-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-weight: 900;
+            font-size: 4rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 1rem auto 2rem;
+        }
+
+        /* --- Gumbi (Buttons) --- */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background: var(--secondary-color);
+            color: var(--white-color);
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            border: none;
+        }
+
+        .btn:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+             background: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background: #34495e;
+        }
+
+        /* --- Stilovi za sekcije --- */
+        .welcome, .nanbudo-desc, .training, .trainers, .news, .location {
+            background: var(--light-color);
+        }
+        
+        #gallery { background: var(--white-color); }
+
+        /* --- Prednosti Nanbuda Sekcija --- */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 3rem;
+        }
+
+        .benefit-card {
+            background: #fff;
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .benefit-card .icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.3rem;
+        }
+        
+        /* --- Sadržaj treninga --- */
+        .content-flex {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .content-flex img {
+            max-width: 50%;
+            border-radius: 10px;
+        }
+        
+        /* --- Sekcija Treneri --- */
+        .trainers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .trainer-card {
+            background: var(--white-color);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .trainer-card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .trainer-card .trainer-rank {
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-top: -10px;
+            display: block;
+        }
+
+        /* --- Sekcija Galerija --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .gallery-item img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        /* --- Sekcija Novosti --- */
+        .news-grid {
+            display: flex;
+            overflow-x: auto;
+            gap: 2rem;
+            padding: 1rem 0 2rem 0;
+            margin-top: 3rem;
+            scrollbar-width: thin;
+            -ms-overflow-style: none;
+        }
+        .news-grid::-webkit-scrollbar { height: 8px; }
+        .news-grid::-webkit-scrollbar-track { background: #e0e0e0; border-radius: 4px; }
+        .news-grid::-webkit-scrollbar-thumb { background-color: #a0a0a0; border-radius: 4px; }
+        .news-grid::-webkit-scrollbar-thumb:hover { background-color: #808080; }
+
+        .news-card {
+            background: var(--white-color);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            flex: 0 0 320px;
+        }
+        .news-card img { width: 100%; height: 200px; object-fit: cover; }
+        .news-card-content { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
+        .news-card-content h3 { margin-top: 0; font-size: 1.3rem; }
+        .news-card-content .date { font-size: 0.9rem; color: #777; margin-bottom: 1rem; }
+
+        /* --- Sekcija Lokacija --- */
+        .location-content {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .location-block:not(:last-child) {
+            margin-bottom: 4rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .location-details h3 {
+            margin-top: 0;
+            font-size: 1.8rem;
+        }
+        .location-details p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        .location-details h4.group-title {
+            margin-top: -10px;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+            font-weight: 700;
+        }
+        .location-map iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 350px;
+            border: 0;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* --- Završna CTA Sekcija --- */
+        .final-cta {
+            background: var(--primary-color);
+            color: var(--white-color);
+            text-align: center;
+        }
+
+        .final-cta h2 { color: var(--white-color); font-size: 2.8rem; }
+        .final-cta .btn { font-size: 1.5rem; padding: 20px 40px; margin-top: 1rem; font-weight: 900; }
+        
+        /* --- Footer --- */
+        .footer {
+            background: var(--dark-text);
+            color: var(--light-color);
+            text-align: center;
+            padding: 20px 0;
+        }
+        
+        /* --- Responsivnost --- */
+        @media(max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .hero h1 { font-size: 3rem; }
+            h2 { font-size: 2rem; }
+            .content-flex, .location-content {
+                flex-direction: column;
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .content-flex img { max-width: 100%; margin-bottom: 1rem; }
+            .news-card { flex-basis: 280px; }
+            .location-content { text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">Nanbudo Klub <span class="logo-accent">Sunce</span></a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Ovladaj pokretom. Izgradi samopouzdanje.</h1>
+            <p>Nanbudo Klub "Sunce" nudi strukturirani program za mlade koji žele naučiti sveobuhvatnu borilačku vještinu, razviti disciplinu i postići izvrsnu fizičku spremnost.</p>
+            <a href="#lokacija" class="btn">Zatraži probni trening</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="welcome text-center">
+            <div class="container">
+                <h2>Nauči kompletnu borilačku vještinu</h2>
+                <p><strong>Nanbudo Klub "Sunce"</strong> je mjesto za strukturirani razvoj tjelesnih i mentalnih sposobnosti kroz učenje Nanbuda. Naš program je osmišljen kako bi mladima pružio temelje discipline, poštovanja i upornosti, istovremeno gradeći njihove motoričke vještine i samopouzdanje u sigurnom i poticajnom okruženju.</p>
+            </div>
+        </section>
+
+        <section id="o-nanbudu" class="nanbudo-desc">
+            <div class="container">
+                <h2 class="text-center">Što je Nanbudo?</h2>
+                <p class="text-center" style="max-width: 800px; margin: 0 auto 2rem;">Nanbudo je moderna i sveobuhvatna japanska borilačka vještina koju je utemeljio Doshu Soke Yoshinao Nanbu. 
+				Nastao na temeljima tradicionalnih borilačkih vještina (Karate, Aikido, Judo), Nanbudo stavlja naglasak na skladan razvoj pojedinca – fizički, mentalni i tehnički.</p>
+                <p class="text-center" style="max-width: 800px; margin: 0 auto;">Vještina se temelji na izbjegavanju protivnikovog napada i korištenju njegove snage protiv njega samog. 
+				Filozofija Nanbuda potiče samopoboljšanje, hrabrost i poštovanje, čineći ga idealnim sustavom za cjeloživotni razvoj. <a href="https://www.nanbudo-heiwa.com/nanbudo.html" target="_blank">Više...</a></p>
+				
+            </div>
+        </section>
+
+        <section id="benefits">
+            <div class="container">
+                <h2>Što se razvija treningom Nanbuda?</h2>
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="icon">🤸</div>
+                        <h3>Spretnost i koordinacija</h3>
+                        <p>Kroz učenje tehnika padova (ukemi) i kompleksnih kretnji, razvija se iznimna kontrola nad tijelom i agilnost.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="icon">🥋</div>
+                        <h3>Snaga i tehnika</h3>
+                        <p>Savladaj širok spektar ručnih (tsuki) i nožnih udaraca (geri), gradeći snagu, brzinu i preciznost pokreta.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="icon">🎯</div>
+                        <h3>Disciplina i fokus</h3>
+                        <p>Rad s tradicionalnim drvenim oružjem (Bo, Bokken) zahtijeva i razvija visoku razinu koncentracije i mentalne discipline.</p>
+                    </div>
+                     <div class="benefit-card">
+                        <div class="icon">🤝</div>
+                        <h3>Poštovanje i ustrajnost</h3>
+                        <p>Kroz trening u doju, uči se poštovanje prema instruktorima i partnerima te važnost ustrajnosti u postizanju ciljeva.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="training">
+            <div class="container">
+                <div class="content-flex">
+                    <img src="trening.jpg" alt="Strukturirani trening nanbuda za mlade">
+                    <div class="text-content">
+                        <h2 style="text-align: left;">Struktura treninga</h2>
+                        <p>Naši treninzi su pažljivo programirani kako bi osigurali postepen i siguran napredak svakog člana. Svaki trening obuhvaća različite elemente vještine:</p>
+                        <ul>
+                            <li><strong>Osnovne tehnike (Kihon):</strong> Učenje pravilnih stavova, blokova i udaraca.</li>
+                            <li><strong>Nanbu Kate:</strong> Vježbanje formi koje kombiniraju tehnike u skladnu cjelinu.</li>
+                            <li><strong>Tehnike padova (Ukemi):</strong> Ključan element za sigurnost i napredne tehnike.</li>
+                            <li><strong>Rad s partnerom (Randori):</strong> Primjena naučenih tehnika u kontroliranim uvjetima.</li>
+                            <li><strong>Rad s oružjem (Buki Waza):</strong> Za naprednije članove.</li>
+                        </ul>
+                        <a href="#lokacija" class="btn btn-primary">Pogledaj raspored</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="treneri" class="trainers">
+            <div class="container">
+                <h2 class="text-center">Naši Treneri</h2>
+                <p class="text-center" style="max-width: 800px; margin: 0 auto;">Naš tim čine iskusni i licencirani treneri s dugogodišnjim iskustvom u Nanbudu i radu s mladima. Posvećeni su prenošenju znanja na siguran, strukturiran i motivirajući način.</p>
+                <div class="trainers-grid">
+                    <div class="trainer-card">
+                        <img src="miha.jpg" alt="Fotografija trenera Mihaela Župančića">
+                        <h3>Mihael Župančić</h3>
+                        <span class="trainer-rank">Glavni trener, 6. Dan</span>
+                        <p>Mihael se nanbudoom bavi od svoje 10. godine. Sudjelovao je na velikom broju seminara pod vodstvom osnivača vještine, Yoshinaa Nanbua, te na mnogim demonstracijama. 
+						Osposobljen za podučavanje nanbudoa od Hrvatskog instituta za kineziologiju.
+						Kao dugogodišnji natjecatelj, osvojio je niz medalja na međunarodnim i nacionalnim natjecanjima. Voditelj je Nacionalne ispitne komisije za stupnjeve u nanbudou.</p>
+                    </div>
+                    <div class="trainer-card">
+                        <img src="dora1.jpg" alt="Fotografija trenerice Dorotee Župančić">
+                        <h3>Dorotea Župančić</h3>
+                        <span class="trainer-rank">Trenerica, 5. Dan</span>
+                        <p>Dorotea se nanbudoom bavi od svoje 8. godine. Znanje je gradila na brojnim seminarima pod vodstvom Yoshinaa Nanbua te sudjelovanjem na demonstracijama u zemlji i inozemstvu. 
+						Osposobljena za podučavanje nanbudoa od Hrvatskog instituta za kineziologiju.
+						Dugi niz godina uspješno se natjecala i osvojila je niz medalja na međunarodnim i nacionalnim natjecanjima.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery">
+            <div class="container">
+                <h2 class="text-center">Galerija</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item"><img src="mico2.jpg" alt="Slika s treninga"></div>
+                    <div class="gallery-item"><img src="mirta.jpg" alt="Prikaz tehnike"></div>
+                    <div class="gallery-item"><img src="trening2.jpg" alt="Tim kluba"></div>
+                    <div class="gallery-item"><img src="seminar.jpeg" alt="Slika sa seminara"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="news" class="news">
+            <div class="container">
+                <h2 class="text-center">Novosti i objave</h2>
+                <div class="news-grid">
+                    <div class="news-card">
+                        <img src="yoshinao nanbu s djecom-min.jpg" alt="Upisi u novu sezonu">
+                        <div class="news-card-content">
+                            <span class="date">20. kolovoza 2025.</span>
+                            <h3>Upisi u novu sezonu su otvoreni!</h3>
+                            <p>Pozivamo sve zainteresirane da nam se pridruže. Treninzi počinju s prvim tjednom rujna. Osigurajte svoje mjesto na vrijeme!</p>
+                        </div>
+                    </div>
+                    <div class="news-card">
+                        <img src="zimski.jpg" alt="Nanbudo seminar">
+                        <div class="news-card-content">
+                            <span class="date">15. kolovoza 2025.</span>
+                            <h3>Najava zimskog Nanbudo seminara</h3>
+                            <p>S veseljem najavljujemo tradicionalni zimski seminar koji će se održati u siječnju. <a href="https://www.facebook.com/events/2530311570635819" target="_blank">Detalji</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="lokacija" class="location">
+            <div class="container">
+                <h2 class="text-center">Naše Lokacije</h2>
+				<div class="location-block">
+                    <div class="location-content">
+                        <div class="location-details">
+                            <h3>Lokacija: OŠ Marin Držić</h3>
+                            <h4 class="group-title">Grupe za mlade (osnovna i srednja škola)</h4>
+                            <p>
+                                <strong>Osnovna škola Marina Držića</strong><br>
+                                Nalješkovićeva 4, 10000 Zagreb
+                            </p>
+                            <h4>Termini treninga</h4>
+                            <p>
+                                Ponedjeljak, Četvrtak<br>
+                                20:00 - 21:30
+                            </p>
+                        </div>
+                        <div class="location-map">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5570.621102355751!2d15.901763514389438!3d45.72486651676872!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4765d4bf9faee3cd%3A0x7825de1d4015a80b!2sO%C5%A0%20Brezovica!5e0!3m2!1shr!2shr!4v1756229247111!5m2!1shr!2shr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+							</div>
+                    </div>
+                </div>
+ <!--div class="location-block">
+                    <div class="location-content">
+                        <div class="location-details">
+                            <h3>Lokacija 1: Radnička</h3>
+                            <h4 class="group-title">Grupe za odrasle (studenti i stariji)</h4>
+                            <p>
+                                <strong>Dojo 66</strong><br>
+                                Ul. Vjekoslava Heinzela 66, 10000, Zagreb
+                            </p>
+                            <h4>Termini treninga</h4>
+                            <p>
+                                Utorak i Četvrtak<br>
+                                20:00 - 21:30
+                            </p>
+                        </div>
+                        <div class="location-map">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2781.2649729214518!2d16.001862575988294!3d45.805951471081656!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4765d7b9c9d12fc9%3A0x4699dcc3f79e58da!2sDojo66!5e0!3m2!1shr!2shr!4v1756229280198!5m2!1shr!2shr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="location-block">
+                    <div class="location-content">
+                        <div class="location-details">
+                            <h3>Lokacija 2: Brezovica</h3>
+                            <h4 class="group-title">Grupe za mlade (osnovna i srednja škola)</h4>
+                            <p>
+                                <strong>Osnovna škola Brezovica</strong><br>
+                                Brezovička cesta 98A, 10251 Brezovica
+                            </p>
+                            <h4>Termini treninga</h4>
+                            <p>
+                                Ponedjeljak, Srijeda, Petak<br>
+                                19:00 - 20:30
+                            </p>
+                        </div>
+                        <div class="location-map">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5570.621102355751!2d15.901763514389438!3d45.72486651676872!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4765d4bf9faee3cd%3A0x7825de1d4015a80b!2sO%C5%A0%20Brezovica!5e0!3m2!1shr!2shr!4v1756229247111!5m2!1shr!2shr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+							</div>
+                    </div>
+                </div-->
+            </div>
+        </section>
+
+        <section id="final-cta" class="final-cta">
+            <div class="container">
+                <h2>Napravi prvi korak</h2>
+                <p>Najbolji način da upoznaš Nanbudo je kroz praktično iskustvo. Prijavi se za besplatni probni trening bez obaveze.</p>
+                <a href="mailto:mihaelzupancic@gmail.com" target="_blank" class="btn">PRIJAVI SE ZA PROBNI TRENING</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Nanbudo Klub "Sunce" | Sva prava pridržana.</p>
+    </footer>
+
+</body>
+</html>
