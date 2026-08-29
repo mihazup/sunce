@@ -464,6 +464,8 @@ section {
     backdrop-filter: none;
     transition: var(--transition);
     text-align: center;
+    user-select: none;
+    color: var(--text-dark);
 }
 
 .structure-card:hover {
