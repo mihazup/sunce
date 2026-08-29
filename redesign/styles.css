@@ -475,14 +475,16 @@ section {
 }
 
 .structure-card h4 {
-    color: var(--accent-gold);
+    color: var(--text-dark);
     margin-bottom: 1rem;
+    user-select: none;
 }
 
 .structure-card p {
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--text-dark);
     margin: 0;
     font-size: 0.95rem;
+    user-select: none;
 }
 
 /* ========================
